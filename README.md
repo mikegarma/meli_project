@@ -1,5 +1,5 @@
 # meli_project
-Project for Mercado Libre: Create a scraper of Fravega and Garbarino cell phone categories, to compare and analyze prices.
+Create a scraper of Fravega and Garbarino cell phone categories, to compare and analyze prices.
 
 # installation
 * Install Python 3.7 or higher
