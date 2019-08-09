@@ -4,7 +4,14 @@ from bs4 import BeautifulSoup
 from utils.utils import celphone_formatter
 
 
-def fravega_scrap(path: str) -> dict:
+def fravega_scrap(path: str) -> list:
+    """
+    Scrapes the link provided, returning a list of dictionaries
+    with the name and price of all the products in the webpage.
+
+    Params:
+    *path* the url provided to scrap 
+    """
     fravega_articles = []
     done, counter = False, 1
     print("- Scraping Fravega ")
