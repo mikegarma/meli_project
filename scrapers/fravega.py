@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
+
 from utils.utils import celphone_formatter
+
 
 def fravega_scrap(path):
     fravega_articles = []

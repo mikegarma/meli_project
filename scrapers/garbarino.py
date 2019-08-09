@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
+
 from utils.utils import celphone_formatter
+
 
 def garbarino_scrap(path):
     garbarino_articles = []
@@ -25,27 +27,3 @@ def garbarino_scrap(path):
             counter+=1
     
     return garbarino_articles
-    
-
-""""
-garbarino_names = [celphone_formatter(i['name']) for i in garbarino_articles]
-fravega_names = [celphone_formatter(i['name']) for i in fravega_articles]
-
-
-
-for name in fravega_names:
-    print(SequenceMatcher(None, garbarino_names[1], name).ratio()*100)
-
-garbarino_names[0]
-
-
-
-print([matchmaker(i, fravega_names) for i in garbarino_names])
-
-for i in fravega_articles:
-    print(i['name'])
-
-"""
- 
-
- 

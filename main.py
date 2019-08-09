@@ -1,8 +1,8 @@
+import pandas as pd
+
 from scrapers.fravega import fravega_scrap
 from scrapers.garbarino import garbarino_scrap
 from utils.utils import matchmaker, data_to_excel, get_average_price
-import pandas as pd
-from matplotlib import pyplot as plt
 
 
 product_name = "Celulares"

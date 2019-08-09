@@ -1,6 +1,7 @@
 from difflib import SequenceMatcher
 import pandas as pd
 
+
 def celphone_formatter(name):
     name = name.replace("Celular", "").replace("Libre", "").replace("Liberado", "").replace("Celulares", "").replace("/", "").replace("  ", "")
     #strip colors
@@ -24,6 +25,7 @@ def get_average_price(article_count, articles):
     average_price = round(total_sum/article_count, 2)
     return average_price
 
+
 def matchmaker(element, dictionary):
     for l in dictionary:
         if (SequenceMatcher(None, l['name'], element['name']).ratio()*100)> 95.0:
@@ -34,7 +36,7 @@ def matchmaker(element, dictionary):
 
 def data_to_excel(df_garbarino, df_fravega, df_matches, df_stats):
     print("- Exporting Data to Excel")
-    writer = pd.ExcelWriter('ouput.xlsx',engine='xlsxwriter')
+    writer = pd.ExcelWriter('ouput_example.xlsx',engine='xlsxwriter')
 
     df_garbarino.to_excel(writer, sheet_name='Garbarino Products', index=False)
     df_fravega.to_excel(writer, sheet_name='Fravega Products', index=False)
@@ -68,6 +70,3 @@ def data_to_excel(df_garbarino, df_fravega, df_matches, df_stats):
     chart.set_size({'width': 720, 'height': 526})
     worksheet.insert_chart('F2', chart)
     writer.save()
-    
-
-
