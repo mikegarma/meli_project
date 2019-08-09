@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from utils.utils import celphone_formatter
 
 
-def fravega_scrap(path):
+def fravega_scrap(path: str) -> dict:
     fravega_articles = []
     done, counter = False, 1
     print("- Scraping Fravega ")

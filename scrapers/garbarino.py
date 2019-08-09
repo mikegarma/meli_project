@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from utils.utils import celphone_formatter
 
 
-def garbarino_scrap(path):
+def garbarino_scrap(path: str) -> dict:
     garbarino_articles = []
     done, counter = False, 1
     print("- Scraping Garbarino ")

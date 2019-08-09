@@ -2,7 +2,7 @@ from difflib import SequenceMatcher
 import pandas as pd
 
 
-def celphone_formatter(name):
+def celphone_formatter(name: str) -> str:
     name = name.replace("Celular", "").replace("Libre", "").replace("Liberado", "").replace("Celulares", "").replace("/", "").replace("  ", "")
     #strip colors
     name = name.replace("Negro", "").replace("Blanco", "").replace("Violeta", "").replace("Azul", "").replace("Azul Marino", "").replace("Gris", "").replace("Bronce", "")
@@ -13,20 +13,20 @@ def celphone_formatter(name):
     return(name.strip())
 
 
-def aire_acondicionado_formatter(name):
+def aire_acondicionado_formatter(name: str) -> str:
     name = name.replace("Aire", "").replace("Acondicionado", "").replace("Split", "").replace("Inverter", "").replace("Frío", "").replace("Calor", "").replace("Acond", "").replace("Portatil", "")
     name = name.replace("Ventana", "").replace("Comercial", "").replace("Solo", "").replace("Frio", "").replace("Techo", "").replace("Frigorias", "").replace("/", "").replace(".", "").replace("  ", " ")
     name = name.replace("para", "").replace("Wifi", "").strip()
     return name 
 
 
-def get_average_price(article_count, articles):
+def get_average_price(article_count: int, articles: list) -> float:
     total_sum = sum([i['price'] for i in articles])
     average_price = round(total_sum/article_count, 2)
     return average_price
 
 
-def matchmaker(element, dictionary):
+def matchmaker(element: dict, dictionary: list) -> dict:
     for l in dictionary:
         if (SequenceMatcher(None, l['name'], element['name']).ratio()*100)> 95.0:
             return l
@@ -34,9 +34,10 @@ def matchmaker(element, dictionary):
         return None
 
 
-def data_to_excel(df_garbarino, df_fravega, df_matches, df_stats):
+def data_to_excel(df_garbarino: pd.DataFrame, df_fravega: pd.DataFrame, 
+    df_matches: pd.DataFrame, df_stats: pd.DataFrame) -> None:
     print("- Exporting Data to Excel")
-    writer = pd.ExcelWriter('ouput_example.xlsx',engine='xlsxwriter')
+    writer = pd.ExcelWriter('ouput.xlsx',engine='xlsxwriter')
 
     df_garbarino.to_excel(writer, sheet_name='Garbarino Products', index=False)
     df_fravega.to_excel(writer, sheet_name='Fravega Products', index=False)
